@@ -44,8 +44,10 @@ def apply_coupons(cart, coupons)
   cart.each do |name, info|
     coupons.each do |discount|
       if discount[:item] == name
-        cart_with_coupons["#{name} W/COUPON"] = {:price => discount[:cost]}
-        cart_with_coupons["#{name} W/COUPON"].merge!(:clearance => info[:clearance])
+        if !cart_with_coupons["#{name} W/COUPON"]
+          cart_with_coupons["#{name} W/COUPON"] = {:price => discount[:cost]}
+          cart_with_coupons["#{name} W/COUPON"].merge!(:clearance => info[:clearance])
+        end
         
         if discount[:num] <= cart_with_coupons[name][:count]
     
