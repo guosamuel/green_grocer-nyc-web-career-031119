@@ -56,7 +56,7 @@ def apply_coupons(cart, coupons)
             else
             
               cart_with_coupons["#{name} W/COUPON"][:count] =  cart_with_coupons["#{name} W/COUPON"][:count] + 1
-            binding.pry
+            
             end
             
           cart_with_coupons[name][:count] = cart_with_coupons[name][:count] - discount[:num]
